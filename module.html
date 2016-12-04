@@ -28,7 +28,7 @@
 					<td>{{entry[1]}}</td>                                                                                              
 					<td>                                                                                                               
 					<div class="btn-group">                                                                                                                           
-						<button type="button" class="btn btn-fixed-length btn-sm btn-default" data-toggle="modal" data-target="#historyModal" ng-click="viewHistory(entry[2])">View</button>
+						<button type="button" class="btn btn-fixed-length btn-sm btn-default" data-toggle="modal" data-target="#SSIDModal" ng-click="viewSSIDFile(entry[2])">View</button>
 						<button type="button" class="btn btn-sm btn-default" ng-click="downloadHistory(entry[2])">Download</button>                                       
 						<button type="button" class="btn btn-fixed-length btn-sm btn-danger" ng-click="deleteHistory(entry[2])">Delete</button>                           
 						</div>                                                                           
@@ -38,5 +38,25 @@
 				</table>
 		</div>
 	</div>
+
+
+        <div class="modal fade" id="SSIDModal" tabindex="-1" role="dialog" aria-labelledby="SSIDModalLabel">                                    
+          <div class="modal-dialog modal-lg" role="document">                                                                                         
+            <div class="modal-content">                                                                                         
+              <div class="modal-header">                                                                                                              
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>          
+                <h4 class="modal-title" id="SSIDModalLabel">View SSID file</h4>                                                    
+              </div>                                                                                                                                  
+              <div class="modal-body">                                                                                                                
+              <pre class="scrollable-pre log-pre">{{SSIDFile}}</pre>                                                                             
+              </div>                                                                                                                                  
+              <div class="modal-footer">                                                                                                              
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                                                     
+              </div>                                                                                                                                  
+            </div>                                                                                                                                    
+          </div>                                                                                                                                      
+        </div>
+
 </div>
+
 

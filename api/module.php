@@ -22,6 +22,9 @@ class SSIDPool extends Module
            case 'deleteHistory':    
              $this->deleteHistory();
            break;
+           case 'viewSSIDFile':
+             $this->viewSSIDFile();
+           break;
         }
     }
 
@@ -66,6 +69,15 @@ class SSIDPool extends Module
     {                                   
       exec("rm -rf /pineapple/modules/SSIDPool/backups/".$this->request->file);
     } 
+
+    private function viewSSIDFile()  
+    {                                   
+      exec ("cat /pineapple/modules/SSIDPool/backups/".$this->request->file, $output);                                             
+      if(!empty($output))               
+        $this->response = array("output" => implode("\n", $output));
+      else                                                                                                           
+        $this->response = array("output" => "Empty SSID file...");
+    }
 
     private function backupCurrent()
     {

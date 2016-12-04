@@ -44,6 +44,7 @@ registerController('SSIDPoolController', ['$api', '$scope', function($api, $scop
                                         }
                         });
         });
+
   //Delete selected file
   $scope.deleteHistory = (function(param) {
         $api.request({                                                                                                                                
@@ -54,5 +55,17 @@ registerController('SSIDPoolController', ['$api', '$scope', function($api, $scop
           $scope.refreshHistory();    
       })                                
   });
+
+  // View selected file
+  $scope.viewSSIDFile = (function(param) {
+        $api.request({                                                                                                                                
+          module: "SSIDPool",             
+          action: "viewSSIDFile",       
+                file: param     
+      }, function(response) {
+          $scope.SSIDFile = response.output;
+      })                          
+  });
+
 
 }]);
