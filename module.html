@@ -7,8 +7,11 @@
 	</div>
 
 	<div class="panel-body">
-	   <button class="btn btn-default btn-sm" ng-click="backupCurrent()">Backup current pool</button> <br>
-	   {{ backupSuccess }}
+          <div class="btn-group">
+	    <button class="btn btn-default btn-sm" ng-click="backupCurrent()">Backup current pool</button>
+	    <button class="btn btn-default btn-sm" ng-click="mergeAllSSID()">Merge all and restore</button>
+          </div>
+	    {{ backupSuccess }}
 	</div>
 
 	<div>

@@ -28,6 +28,9 @@ class SSIDPool extends Module
            case 'restoreSSIDFile':    
              $this->restoreSSIDFile();
            break;
+           case 'mergeAllSSID':    
+             $this->mergeAllSSID();
+           break;
         }
     }
 
@@ -77,6 +80,13 @@ class SSIDPool extends Module
     {
       $ssidfile = "/etc/pineapple/ssid_file";
       exec("cat /pineapple/modules/SSIDPool/backups/".$this->request->file." > $ssidfile");
+      $this->response = array("ssidCount" => count(file($ssidfile)) - 1);
+    }
+
+    private function mergeAllSSID()
+    {
+      $ssidfile = "/etc/pineapple/ssid_file";
+      exec("cat /pineapple/modules/SSIDPool/backups/* | sort | uniq > $ssidfile");
       $this->response = array("ssidCount" => count(file($ssidfile)) - 1);
     }
 

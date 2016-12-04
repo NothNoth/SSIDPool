@@ -78,4 +78,15 @@ registerController('SSIDPoolController', ['$api', '$scope', function($api, $scop
       })                                
   });
 
+  // Merge all SSID
+  $scope.mergeAllSSID = (function(param) {
+        $api.request({                                                                                                                                
+          module: "SSIDPool",             
+          action: "mergeAllSSID",     
+                file: param     
+      }, function(response) {
+        $scope.ssidCount = response.ssidCount;
+      })                                
+  });
+
 }]);
