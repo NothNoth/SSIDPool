@@ -45,48 +45,48 @@ registerController('SSIDPoolController', ['$api', '$scope', function($api, $scop
                         });
         });
 
-  //Delete selected file
-  $scope.deleteSSIDFile = (function(param) {
-        $api.request({                                                                                                                                
-          module: "SSIDPool",             
-          action: "deleteSSIDFile",     
-                file: param     
-      }, function(response) {
-          $scope.refreshSSIDPool();    
-      })                                
-  });
+    //Delete selected file
+    $scope.deleteSSIDFile = (function(param) {
+            $api.request({                                                                                                                                
+            module: "SSIDPool",             
+            action: "deleteSSIDFile",     
+                    file: param     
+        }, function(response) {
+            $scope.refreshSSIDPool();    
+        })                                
+    });
 
-  // View selected file
-  $scope.viewSSIDFile = (function(param) {
-        $api.request({                                                                                                                                
-          module: "SSIDPool",             
-          action: "viewSSIDFile",       
-                file: param     
-      }, function(response) {
-          $scope.SSIDFile = response.output;
-      })                          
-  });
+    // View selected file
+    $scope.viewSSIDFile = (function(param) {
+            $api.request({                                                                                                                                
+            module: "SSIDPool",             
+            action: "viewSSIDFile",       
+                    file: param     
+        }, function(response) {
+            $scope.SSIDFile = response.output;
+        })                          
+    });
 
-  // Restore selected file
-  $scope.restoreSSIDFile = (function(param) {
-        $api.request({                                                                                                                                
-          module: "SSIDPool",             
-          action: "restoreSSIDFile",     
-                file: param     
-      }, function(response) {
-        $scope.ssidCount = response.ssidCount;
-      })                                
-  });
+    // Restore selected file
+    $scope.restoreSSIDFile = (function(param) {
+            $api.request({                                                                                                                                
+            module: "SSIDPool",             
+            action: "restoreSSIDFile",     
+                    file: param     
+        }, function(response) {
+            $scope.ssidCount = response.ssidCount;
+        })                                
+    });
 
-  // Merge all SSID
-  $scope.mergeAllSSID = (function(param) {
-        $api.request({                                                                                                                                
-          module: "SSIDPool",             
-          action: "mergeAllSSID",     
-                file: param     
-      }, function(response) {
-        $scope.ssidCount = response.ssidCount;
-      })                                
-  });
+    // Merge all SSID
+    $scope.mergeAllSSID = (function(param) {
+            $api.request({                                                                                                                                
+            module: "SSIDPool",             
+            action: "mergeAllSSID",     
+                    file: param     
+        }, function(response) {
+            $scope.ssidCount = response.ssidCount;
+        })                                
+    });
 
 }]);
