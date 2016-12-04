@@ -67,5 +67,15 @@ registerController('SSIDPoolController', ['$api', '$scope', function($api, $scop
       })                          
   });
 
+  // Restore selected file
+  $scope.restoreSSIDFile = (function(param) {
+        $api.request({                                                                                                                                
+          module: "SSIDPool",             
+          action: "restoreSSIDFile",     
+                file: param     
+      }, function(response) {
+        $scope.ssidCount = response.ssidCount;
+      })                                
+  });
 
 }]);

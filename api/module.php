@@ -25,6 +25,9 @@ class SSIDPool extends Module
            case 'viewSSIDFile':
              $this->viewSSIDFile();
            break;
+           case 'restoreSSIDFile':    
+             $this->restoreSSIDFile();
+           break;
         }
     }
 
@@ -69,6 +72,13 @@ class SSIDPool extends Module
     {                                   
       exec("rm -rf /pineapple/modules/SSIDPool/backups/".$this->request->file);
     } 
+
+    private function restoreSSIDFile()
+    {
+      $ssidfile = "/etc/pineapple/ssid_file";
+      exec("cat /pineapple/modules/SSIDPool/backups/".$this->request->file." > $ssidfile");
+      $this->response = array("ssidCount" => count(file($ssidfile)) - 1);
+    }
 
     private function viewSSIDFile()  
     {                                   
