@@ -16,6 +16,12 @@ class SSIDPool extends Module
            case 'backupCurrent':
              $this->backupCurrent();
            break;
+           case 'downloadHistory':
+	     $this->downloadHistory();
+           break;
+           case 'deleteHistory':    
+             $this->deleteHistory();
+           break;
         }
     }
 
@@ -50,6 +56,16 @@ class SSIDPool extends Module
       }; 
 
     }
+
+    private function downloadHistory()
+    {                                   
+      $this->response = array("download" => $this->downloadFile("/pineapple/modules/SSIDPool/backups/".$this->request->file));
+    }
+
+    private function deleteHistory()
+    {                                   
+      exec("rm -rf /pineapple/modules/SSIDPool/backups/".$this->request->file);
+    } 
 
     private function backupCurrent()
     {

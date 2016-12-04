@@ -32,6 +32,27 @@ registerController('SSIDPoolController', ['$api', '$scope', function($api, $scop
             $scope.history = response;
         });
     });
-
+    //Download select file
+    $scope.downloadHistory = (function(param) {
+                        $api.request({                                                                                                        
+                                        module: 'SSIDPool',
+                                        action: 'downloadHistory',
+                                        file: param
+                        }, function(response) {
+                                        if (response.error === undefined) {
+                                                        window.location = '/api/?download=' + response.download;
+                                        }
+                        });
+        });
+  //Delete selected file
+  $scope.deleteHistory = (function(param) {
+        $api.request({                                                                                                                                
+          module: "SSIDPool",             
+          action: "deleteHistory",     
+                file: param     
+      }, function(response) {
+          $scope.refreshHistory();    
+      })                                
+  });
 
 }]);
