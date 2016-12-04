@@ -10,17 +10,17 @@ class SSIDPool extends Module
            case 'getSSIDCount':
              $this->getSSIDCount();
            break;
-           case 'getHistory':
-             $this->getHistory();
+           case 'getSSIDPool':
+             $this->getSSIDPool();
            break;
            case 'backupCurrent':
              $this->backupCurrent();
            break;
-           case 'downloadHistory':
-	     $this->downloadHistory();
+           case 'downloadSSIDFile':
+	     $this->downloadSSIDFile();
            break;
-           case 'deleteHistory':    
-             $this->deleteHistory();
+           case 'deleteSSIDFile':    
+             $this->deleteSSIDFile();
            break;
            case 'viewSSIDFile':
              $this->viewSSIDFile();
@@ -35,7 +35,7 @@ class SSIDPool extends Module
                               "ssidCount" => count(file($ssidfile)) - 1 );
     }
 
-    private function getHistory()
+    private function getSSIDPool()
     {
 
       $this->streamFunction = function ()
@@ -60,12 +60,12 @@ class SSIDPool extends Module
 
     }
 
-    private function downloadHistory()
+    private function downloadSSIDFile()
     {                                   
       $this->response = array("download" => $this->downloadFile("/pineapple/modules/SSIDPool/backups/".$this->request->file));
     }
 
-    private function deleteHistory()
+    private function deleteSSIDFile()
     {                                   
       exec("rm -rf /pineapple/modules/SSIDPool/backups/".$this->request->file);
     } 

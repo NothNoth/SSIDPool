@@ -7,7 +7,7 @@ registerController('SSIDPoolController', ['$api', '$scope', function($api, $scop
         action: 'getSSIDCount'
     }, function(response) 
        {
-        $scope.refreshHistory();
+        $scope.refreshSSIDPool();
         $scope.ssidCount = response.ssidCount;
        }
        );
@@ -18,25 +18,25 @@ registerController('SSIDPoolController', ['$api', '$scope', function($api, $scop
             module: 'SSIDPool',
             action: 'backupCurrent'
         }, function(response) {
-            $scope.refreshHistory();
+            $scope.refreshSSIDPool();
             $scope.backupSuccess = response.error;
         });
     });
 
     //Save current SSID list
-    $scope.refreshHistory = (function() {
+    $scope.refreshSSIDPool = (function() {
         $api.request({
             module: 'SSIDPool',
-            action: 'getHistory'
+            action: 'getSSIDPool'
         }, function(response) {
-            $scope.history = response;
+            $scope.SSIDPool = response;
         });
     });
     //Download select file
-    $scope.downloadHistory = (function(param) {
+    $scope.downloadSSIDFile = (function(param) {
                         $api.request({                                                                                                        
                                         module: 'SSIDPool',
-                                        action: 'downloadHistory',
+                                        action: 'downloadSSIDFile',
                                         file: param
                         }, function(response) {
                                         if (response.error === undefined) {
@@ -46,13 +46,13 @@ registerController('SSIDPoolController', ['$api', '$scope', function($api, $scop
         });
 
   //Delete selected file
-  $scope.deleteHistory = (function(param) {
+  $scope.deleteSSIDFile = (function(param) {
         $api.request({                                                                                                                                
           module: "SSIDPool",             
-          action: "deleteHistory",     
+          action: "deleteSSIDFile",     
                 file: param     
       }, function(response) {
-          $scope.refreshHistory();    
+          $scope.refreshSSIDPool();    
       })                                
   });
 
