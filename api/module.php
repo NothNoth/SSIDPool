@@ -38,7 +38,7 @@ class SSIDPool extends Module
     {
       $ssidfile = "/etc/pineapple/ssid_file";
       $this->response = array("error" => "",
-                              "ssidCount" => count(file($ssidfile)) - 1 );
+                              "ssidCount" => count(file($ssidfile)));
     }
 
     private function getSSIDPool()
@@ -55,7 +55,7 @@ class SSIDPool extends Module
           $info = explode("_", basename($log_list[$i]));            
           $entryDate = gmdate('Y-m-d H-i-s', $info[1]);
           $entryName = basename($log_list[$i]);                     
-          $c = count(file($backupPath . $entryName)) - 1;       
+          $c = count(file($backupPath . $entryName));       
                                                                     
           echo json_encode(array($entryDate, $c, $entryName));          
                                                           
@@ -80,14 +80,14 @@ class SSIDPool extends Module
     {
       $ssidfile = "/etc/pineapple/ssid_file";
       exec("cat /pineapple/modules/SSIDPool/backups/".$this->request->file." > $ssidfile");
-      $this->response = array("ssidCount" => count(file($ssidfile)) - 1);
+      $this->response = array("ssidCount" => count(file($ssidfile)));
     }
 
     private function mergeAllSSID()
     {
       $ssidfile = "/etc/pineapple/ssid_file";
       exec("cat /pineapple/modules/SSIDPool/backups/* | sort | uniq > $ssidfile");
-      $this->response = array("ssidCount" => count(file($ssidfile)) - 1);
+      $this->response = array("ssidCount" => count(file($ssidfile)));
     }
 
     private function viewSSIDFile()  
