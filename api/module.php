@@ -46,7 +46,7 @@ class SSIDPool extends Module
 
       $this->streamFunction = function ()
       { 
-        $backupPath = "/sd/modules/SSIDPool/backups/";              
+        $backupPath = "/pineapple/modules/SSIDPool/backups/";              
         $log_list = array_reverse(glob($backupPath . "*"));
                                                                           
         echo '[';                                                         
@@ -102,7 +102,7 @@ class SSIDPool extends Module
     private function backupCurrent()
     {
       $ssidfile = "/etc/pineapple/ssid_file";
-      $destpath = "/sd/modules/SSIDPool/backups/";
+      $destpath = "/pineapple/modules/SSIDPool/backups/";
       $file = "ssid_" . time() . ".txt";
       mkdir($destpath);
       if (copy($ssidfile, $destpath . $file) == TRUE)
